@@ -52,7 +52,6 @@
         android:padding="3dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/messagesView"
-        tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintTop_creator="1"
         android:layout_marginLeft="8dp"
@@ -75,7 +74,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/messagesView"
         android:layout_width="0dp"
-        android:layout_height="427dp"
+        android:layout_height="185dp"
         android:layout_marginTop="20dp"
         android:background="@color/cardview_light_background"
         android:padding="5dp"
