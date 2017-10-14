@@ -158,6 +158,7 @@ public class CourseSelectionActivity extends AppCompatActivity {
         goToDashboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                List<Course> courseList = courseAdapter.getCourseList();
                 Intent intent = new Intent(CourseSelectionActivity.this, ProfileCourseActivity.class);
                 startActivity(intent);
             }

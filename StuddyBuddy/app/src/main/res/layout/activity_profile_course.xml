@@ -49,4 +49,25 @@
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintRight_creator="1" />
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/enrolledCourses"
+        android:layout_width="361dp"
+        android:layout_height="190dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addButton"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintHorizontal_bias="0.0"
+        tools:layout_editor_absoluteY="370dp" />
+
 </android.support.constraint.ConstraintLayout>
