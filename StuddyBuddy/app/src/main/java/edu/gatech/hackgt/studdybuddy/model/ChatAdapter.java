@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import edu.gatech.hackgt.studdybuddy.R;
+import edu.gatech.hackgt.studdybuddy.controller.MainActivity;
 
 
 public class ChatAdapter extends RecyclerView.Adapter {
@@ -23,7 +24,7 @@ public class ChatAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater li = LayoutInflater.from(parent.getContext());
-        View v = li.inflate(R.layout.data_item, parent, false);
+        View v = li.inflate(R.layout.message_card, parent, false);
         return new DataViewHolder(v);
     }
 
@@ -32,6 +33,7 @@ public class ChatAdapter extends RecyclerView.Adapter {
         DataViewHolder dvh = (DataViewHolder) holder;
         final ChatMessage cm = messages.get(position);
         dvh.message.setText(cm.getMessage());
+        dvh.user.setText(String.valueOf(MainActivity.userId));
     }
 
     @Override
@@ -69,9 +71,11 @@ public class ChatAdapter extends RecyclerView.Adapter {
 
     private static class DataViewHolder extends RecyclerView.ViewHolder {
         private TextView message;
+        private TextView user;
         public DataViewHolder(View itemView) {
             super(itemView);
-            message = itemView.findViewById(R.id.courseItem);
+            message = itemView.findViewById(R.id.message);
+            user = itemView.findViewById(R.id.username);
         }
     }
 

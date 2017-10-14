@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText pass;
 
     public static int userId;
+    public static String usern;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        String un = user.getText().toString();
+        final String un = user.getText().toString();
         String pw = pass.getText().toString();
         boolean isValid = user.getError() == null
                 && pass.getError() == null && !TextUtils.isEmpty(un)
@@ -70,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                         ad.show();
                     } else {
                         userId = Integer.parseInt(response.body().getMessage());
+                        usern = un;
                         Intent intent = new Intent(MainActivity.this, ProfileCourseActivity.class);
                         startActivity(intent);
                     }

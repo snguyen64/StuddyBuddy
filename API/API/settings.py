@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'studdybuddy_api',
     'django_extensions',
+    'channels',
 ]
 
 MIDDLEWARE = [
