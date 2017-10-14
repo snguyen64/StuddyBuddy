@@ -1,6 +1,8 @@
 package edu.gatech.hackgt.studdybuddy.controller;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -9,7 +11,13 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import edu.gatech.hackgt.studdybuddy.R;
+import edu.gatech.hackgt.studdybuddy.model.APIMessage;
+import edu.gatech.hackgt.studdybuddy.model.User;
+import edu.gatech.hackgt.studdybuddy.util.APIClient;
 import edu.gatech.hackgt.studdybuddy.util.FormValidator;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -70,5 +78,44 @@ public class RegisterActivity extends AppCompatActivity {
                 && confirmPass.getError() == null && !TextUtils.isEmpty(first)
                 && !TextUtils.isEmpty(last) && !TextUtils.isEmpty(user) && !TextUtils.isEmpty(pass)
                 && !TextUtils.isEmpty(confirmPW);
+
+        if (isValid) {
+            User userr = new User(first, last, user, pass);
+            APIClient.getInstance().register(userr).enqueue(new Callback<APIMessage>() {
+                @Override
+                public void onResponse(Call<APIMessage> call, Response<APIMessage> response) {
+                    if (!response.body().isSuccess()) {
+                        AlertDialog ad = new AlertDialog.Builder(RegisterActivity.this)
+                                .setMessage(response.body().getMessage())
+                                .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    }
+                                }).create();
+                        ad.show();
+                    } else {
+                        int userId = Integer.parseInt(response.body().getMessage());
+                        Intent intent = new Intent(RegisterActivity.this,
+                                CourseSelectionActivity.class);
+                        intent.putExtra("userId", userId);
+                        startActivity(intent);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<APIMessage> call, Throwable t) {
+                    AlertDialog ad = new AlertDialog.Builder(RegisterActivity.this)
+                            .setMessage("An unexpected error occurred. Please try again later.")
+                            .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            }).create();
+                    ad.show();
+                }
+            });
+        }
     }
 }

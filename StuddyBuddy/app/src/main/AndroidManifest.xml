@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".controller.LoginActivity" />
         <activity android:name=".controller.RegisterActivity" />
+        <activity android:name=".controller.CourseSelectionActivity"></activity>
     </application>
 
 </manifest>
