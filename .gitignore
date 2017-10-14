@@ -6,3 +6,4 @@ API/Scripts
 API/Include
 API/Lib
 API/pyvenv.cfg
+API/API/__pycache__
