@@ -44,12 +44,18 @@ public class ChatroomAdapter extends RecyclerView.Adapter {
         this.chatrooms = chatrooms;
     }
 
-    private class ChatroomViewHolder extends RecyclerView.ViewHolder {
+    private class ChatroomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView groupName;
 
         public ChatroomViewHolder(View itemView) {
             super(itemView);
             groupName = itemView.findViewById(R.id.username);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+
         }
     }
 }

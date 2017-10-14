@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        String un = user.getText().toString();
+        final String un = user.getText().toString();
         String pw = pass.getText().toString();
         boolean isValid = user.getError() == null
                 && pass.getError() == null && !TextUtils.isEmpty(un)
@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         userId = Integer.parseInt(response.body().getMessage());
                         Intent intent = new Intent(MainActivity.this, ProfileCourseActivity.class);
+                        intent.putExtra("username", un);
                         startActivity(intent);
                     }
                 }
