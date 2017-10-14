@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import edu.gatech.hackgt.studdybuddy.R;
@@ -26,7 +27,7 @@ import static edu.gatech.hackgt.studdybuddy.controller.MainActivity.userId;
 public class RegisterActivity extends AppCompatActivity {
 
     private Button submit;
-    private Button cancel;
+    private ImageButton cancel;
     private EditText firstName;
     private EditText lastName;
     private EditText username;
@@ -39,7 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         submit = (Button) findViewById(R.id.submit);
-        cancel = (Button) findViewById(R.id.cancel);
+        cancel = (ImageButton) findViewById(R.id.cancel);
         firstName = (EditText) findViewById(R.id.firstName);
         lastName = (EditText) findViewById(R.id.lastName);
         username = (EditText) findViewById(R.id.usernameText);

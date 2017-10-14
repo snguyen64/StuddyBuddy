@@ -40,4 +40,16 @@ public class ChatAdapter extends RecyclerView.Adapter {
             message = messageView.findViewById(R.id.messagesView);
         }
     }
+
+    public List<ChatMessage> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<ChatMessage> messages) {
+        this.messages = messages;
+    }
+
+    public void add(ChatMessage cMessage) {
+        messages.add(cMessage);
+    }
 }
