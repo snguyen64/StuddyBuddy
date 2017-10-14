@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from bs4 import BeautifulSoup
+from urllib.request import urlopen
 
 
 @csrf_exempt
@@ -30,3 +32,32 @@ def login(request):
         return JsonResponse({"success": True, "message": user.id})
     else:
         return JsonResponse({"success": False, "message": "Unable to log user in."})
+
+
+@csrf_exempt
+def courses(request, subject):
+    quote_page = 'http://www.catalog.gatech.edu/coursesaz/' + subject + '/'
+
+    # query the website and return the html to the variable ‘page’
+    page = urlopen(quote_page)
+
+    # parse the html using beautiful soap and store in variable `soup`
+    soup = BeautifulSoup(page, 'html.parser')
+
+    charLength = len(subject)
+
+    courseList = []
+
+    for course in soup.find_all('p', attrs={'class': 'courseblocktitle'}):
+
+        # strips string and retrieves the 4 digit course number
+        course = course.text.strip()[charLength: charLength + 5]
+
+        # making sure there are no letters in course number before typecasting
+        # adds course to courseList
+        if 'X' not in course:
+            coursenumber = int(course)
+            courseList.append(coursenumber)
+        else:
+            print("This is a transfer credit course:" + subject + course)
+    return JsonResponse(courseList, safe=False)

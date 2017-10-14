@@ -20,5 +20,6 @@ from studdybuddy_api import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^auth/register/$', views.register),
-    url(r'^auth/login/$', views.login)
+    url(r'^auth/login/$', views.login),
+    url(r'^courses/(?P<subject>\w+)/$', views.courses)
 ]
