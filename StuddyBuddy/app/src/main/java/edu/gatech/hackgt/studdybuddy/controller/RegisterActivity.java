@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import edu.gatech.hackgt.studdybuddy.R;
-import edu.gatech.hackgt.studdybuddy.utils.FormValidator;
+import edu.gatech.hackgt.studdybuddy.util.FormValidator;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -70,6 +70,5 @@ public class RegisterActivity extends AppCompatActivity {
                 && confirmPass.getError() == null && !TextUtils.isEmpty(first)
                 && !TextUtils.isEmpty(last) && !TextUtils.isEmpty(user) && !TextUtils.isEmpty(pass)
                 && !TextUtils.isEmpty(confirmPW);
-
     }
 }

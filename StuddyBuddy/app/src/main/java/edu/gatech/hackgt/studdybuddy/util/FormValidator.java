@@ -1,4 +1,4 @@
-package edu.gatech.hackgt.studdybuddy.utils;
+package edu.gatech.hackgt.studdybuddy.util;
 
 import android.text.Editable;
 import android.text.TextUtils;

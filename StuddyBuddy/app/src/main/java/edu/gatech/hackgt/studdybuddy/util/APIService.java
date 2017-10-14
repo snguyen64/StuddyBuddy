@@ -8,7 +8,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.Call;
 
-interface APIService {
+public interface APIService {
     @POST("auth/login")
     Call<User> login(@Body LoginUser lu);
 
