@@ -54,6 +54,11 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
 
     }
 
+    public void goBack(View view) {
+        Intent intent = new Intent(this, ChatRoomListActivity.class);
+        startActivity(intent);
+    }
+
     public void sendMessage(View view) {
         String mess = textMessage.getText().toString();
         if (TextUtils.isEmpty(mess) || mess == null) {
