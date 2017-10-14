@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             APIClient.getInstance().login(currentUser).enqueue(new Callback<APIMessage>() {
                 @Override
                 public void onResponse(Call<APIMessage> call, Response<APIMessage> response) {
-                    
+
                 }
 
                 @Override
