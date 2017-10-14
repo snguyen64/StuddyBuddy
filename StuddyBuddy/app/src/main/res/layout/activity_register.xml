@@ -56,6 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register"
+        android:onClick="submit"
         app:layout_constraintBaseline_toBaselineOf="@+id/cancel"
         tools:layout_constraintBaseline_creator="1"
         tools:layout_constraintLeft_creator="1"
