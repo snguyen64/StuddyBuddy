@@ -15,7 +15,6 @@ import edu.gatech.hackgt.studdybuddy.model.Course;
 public class ProfileCourseActivity extends AppCompatActivity {
     private Button findBuddies;
     private Button addCourse;
-    private Button removeCourse;
     private List<Course> courses;
     private RecyclerView enrolledCourses;
 
@@ -25,7 +24,6 @@ public class ProfileCourseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_course);
         findBuddies = (Button) findViewById(R.id.findBuddiesButton);
         addCourse = (Button) findViewById(R.id.addCourse);
-        removeCourse = (Button) findViewById(R.id.removeCourse);
         courses = (List<Course>) getIntent().getSerializableExtra("courses");
 
     }
@@ -36,12 +34,6 @@ public class ProfileCourseActivity extends AppCompatActivity {
     }
 
     public void addCourse(View view) {
-        Intent intent = new Intent(this, CourseSelectionActivity.class);
-        startActivity(intent);
-    }
-
-    public void removeCourse(View view) {
-        //need to do stuff with this
         Intent intent = new Intent(this, CourseSelectionActivity.class);
         startActivity(intent);
     }
