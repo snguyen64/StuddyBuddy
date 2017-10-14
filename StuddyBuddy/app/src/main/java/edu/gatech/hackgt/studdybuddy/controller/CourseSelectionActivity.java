@@ -1,5 +1,6 @@
 package edu.gatech.hackgt.studdybuddy.controller;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -32,6 +33,7 @@ public class CourseSelectionActivity extends AppCompatActivity {
     private Spinner courseNumberSpinner;
 
     private Button addButton;
+    private Button goToDashboard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +89,15 @@ public class CourseSelectionActivity extends AppCompatActivity {
                     courseAdapter.getCourseList().add(course);
                     courseAdapter.notifyItemInserted(courseAdapter.getCourseList().size() - 1);
                 }
+            }
+        });
+
+        goToDashboard = (Button) findViewById(R.id.goToDashboard);
+        goToDashboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CourseSelectionActivity.this, ProfileCourseActivity.class);
+                startActivity(intent);
             }
         });
     }

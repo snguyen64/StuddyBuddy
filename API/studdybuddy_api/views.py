@@ -18,7 +18,6 @@ def register(request):
     password = body["password"]
     email = body["email"]
     user = User.objects.create_user(username, email=email, password=password, first_name=firstName, last_name=lastName)
-    user.save()
     return JsonResponse({"success": True, "message": user.id})
 
 
@@ -26,7 +25,9 @@ def register(request):
 def login(request):
     body = json.loads(request.body.decode('utf-8'))
     username = body["username"]
+    print(username)
     password = body["password"]
+    print(password)
     user = authenticate(username=username, password=password)
     if user is not None:
         return JsonResponse({"success": True, "message": user.id})
