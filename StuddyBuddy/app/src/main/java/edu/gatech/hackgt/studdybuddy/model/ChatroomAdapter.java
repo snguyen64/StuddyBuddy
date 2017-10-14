@@ -1,5 +1,6 @@
 package edu.gatech.hackgt.studdybuddy.model;
 
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,13 +11,23 @@ import android.widget.TextView;
 import java.util.List;
 
 import edu.gatech.hackgt.studdybuddy.R;
+import edu.gatech.hackgt.studdybuddy.controller.ActiveChatRoomActivity;
+import edu.gatech.hackgt.studdybuddy.controller.ChatRoomListActivity;
 
 public class ChatroomAdapter extends RecyclerView.Adapter {
+
+    public interface OnItemClickListener {
+        void onItemClick(Chatroom room);
+    }
+
     private List<Chatroom> chatrooms;
 
-    public ChatroomAdapter(List<Chatroom> chatrooms) {
-        this.chatrooms = chatrooms;
+    private final OnItemClickListener listener;
+    public ChatroomAdapter(List<Chatroom> data, OnItemClickListener listener) {
+        this.chatrooms = data;
+        this.listener = listener;
     }
+
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -27,8 +38,14 @@ public class ChatroomAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        Chatroom chatroom = chatrooms.get(position);
+        final Chatroom chatroom = chatrooms.get(position);
         ((ChatroomViewHolder) holder).groupName.setText(chatroom.getName());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                listener.onItemClick(chatroom);
+            }
+        });
     }
 
     @Override
@@ -44,18 +61,12 @@ public class ChatroomAdapter extends RecyclerView.Adapter {
         this.chatrooms = chatrooms;
     }
 
-    private class ChatroomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    private class ChatroomViewHolder extends RecyclerView.ViewHolder{
         private TextView groupName;
 
         public ChatroomViewHolder(View itemView) {
             super(itemView);
             groupName = itemView.findViewById(R.id.username);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-
         }
     }
 }

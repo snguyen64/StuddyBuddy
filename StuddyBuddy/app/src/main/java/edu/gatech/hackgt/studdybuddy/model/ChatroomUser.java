@@ -2,7 +2,9 @@ package edu.gatech.hackgt.studdybuddy.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ChatroomUser {
+import java.io.Serializable;
+
+public class ChatroomUser implements Serializable {
     @SerializedName("id")
     private int id;
 

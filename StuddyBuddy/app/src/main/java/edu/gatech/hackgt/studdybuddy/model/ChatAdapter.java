@@ -33,7 +33,7 @@ public class ChatAdapter extends RecyclerView.Adapter {
         DataViewHolder dvh = (DataViewHolder) holder;
         final ChatMessage cm = messages.get(position);
         dvh.message.setText(cm.getMessage());
-        dvh.user.setText(String.valueOf(MainActivity.userId));
+        dvh.user.setText(MainActivity.usern);
     }
 
     @Override
