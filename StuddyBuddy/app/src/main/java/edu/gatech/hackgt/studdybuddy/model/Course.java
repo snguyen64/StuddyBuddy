@@ -2,7 +2,9 @@ package edu.gatech.hackgt.studdybuddy.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Course {
+import java.io.Serializable;
+
+public class Course implements Serializable {
     @SerializedName("courseType")
     private CourseType courseType;
 
