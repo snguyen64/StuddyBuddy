@@ -11,19 +11,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.MainActivity">
+        <activity android:name=".controller.MainActivity"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.RegisterActivity" />
-        <activity android:name=".controller.CourseSelectionActivity" />
-        <activity android:name=".controller.ProfileCourseActivity" />
-        <activity android:name=".controller.ChatRoomListActivity" />
-        <activity android:name=".controller.ChatRoomCreateActivity" />
-        <activity android:name=".controller.ActiveChatRoomActivity"></activity>
+        <activity android:name=".controller.RegisterActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".controller.CourseSelectionActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".controller.ProfileCourseActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".controller.ChatRoomListActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".controller.ChatRoomCreateActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".controller.ActiveChatRoomActivity"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
     </application>
 
 </manifest>

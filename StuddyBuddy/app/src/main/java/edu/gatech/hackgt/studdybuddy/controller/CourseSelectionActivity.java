@@ -1,7 +1,6 @@
 package edu.gatech.hackgt.studdybuddy.controller;
 
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -99,7 +98,7 @@ public class CourseSelectionActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, CourseType.values());
         courseTypeSpinner.setAdapter(courseTypeArrayAdapter);
 
-        courseNumberSpinner = (Spinner) findViewById(R.id.courseNumber);
+        courseNumberSpinner = (Spinner) findViewById(R.id.courseNumberText);
 
         courseTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
