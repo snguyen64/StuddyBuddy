@@ -3,13 +3,15 @@ package edu.gatech.hackgt.studdybuddy.controller;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import edu.gatech.hackgt.studdybuddy.R;
+import edu.gatech.hackgt.studdybuddy.utils.FormValidator;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity implements AsyncHandler<APIMessage> {
 
     private Button submit;
     private Button cancel;
@@ -30,6 +32,23 @@ public class RegisterActivity extends AppCompatActivity {
         username = (EditText) findViewById(R.id.usernameText);
         password = (EditText) findViewById(R.id.passwordText);
         confirmPass = (EditText) findViewById(R.id.confirmPassText);
+
+        FormValidator fn = new FormValidator(firstName, "First name");
+        FormValidator ln = new FormValidator(lastName, "Last name");
+        FormValidator un = new FormValidator(username, "Username");
+        FormValidator pa = new FormValidator(password, "Password");
+        FormValidator cp = new FormValidator(confirmPass, "Confirm password");
+
+        firstName.addTextChangedListener(fn);
+        firstName.setOnFocusChangeListener(fn);
+        lastName.addTextChangedListener(ln);
+        lastName.setOnFocusChangeListener(ln);
+        username.addTextChangedListener(un);
+        username.setOnFocusChangeListener(un);
+        password.addTextChangedListener(pa);
+        password.setOnFocusChangeListener(pa);
+        confirmPass.addTextChangedListener(cp);
+        confirmPass.setOnFocusChangeListener(cp);
     }
 
     public void cancel(View view) {
@@ -42,6 +61,15 @@ public class RegisterActivity extends AppCompatActivity {
         String last = lastName.getText().toString();
         String user = username.getText().toString();
         String pass = password.getText().toString();
-        String confirmPass = 
+        String confirmPW = confirmPass.getText().toString();
+        if (!pass.equals(confirmPW)) {
+            confirmPass.setError("Passwords don't match!");
+        }
+        boolean isValid = firstName.getError() == null && lastName.getError() == null
+                && username.getError() == null && password.getError() == null
+                && confirmPass.getError() == null && !TextUtils.isEmpty(firstN)
+                && !TextUtils.isEmpty(last) && !TextUtils.isEmpty(user) && !TextUtils.isEmpty(pass)
+                && !TextUtils.isEmpty(confirmPW);
+
     }
 }
