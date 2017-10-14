@@ -3,6 +3,7 @@ package edu.gatech.hackgt.studdybuddy.util;
 import java.util.List;
 
 import edu.gatech.hackgt.studdybuddy.model.APIMessage;
+import edu.gatech.hackgt.studdybuddy.model.Chatroom;
 import edu.gatech.hackgt.studdybuddy.model.Course;
 import edu.gatech.hackgt.studdybuddy.model.CourseType;
 import edu.gatech.hackgt.studdybuddy.model.LoginUser;
@@ -33,4 +34,13 @@ public interface APIService {
 
     @DELETE("course/{id}/delete/{type}/{number}/")
     Call<APIMessage> deleteCourse(@Path("id") int userid, @Path("type") String type, @Path("number") int number);
+
+    @POST("chatroom/create/{id}/")
+    Call<APIMessage> createChatroom(@Body Chatroom chatroom, @Path("id") int userid);
+
+    @POST("chatroom/{name}/join/{id}/")
+    Call<APIMessage> joinChatroom(@Path("name") String name, @Path("id") int userId);
+
+    @POST("chatroom/list/")
+    Call<List<Chatroom>> getListofChatroomsByCourse(@Body Course course);
 }

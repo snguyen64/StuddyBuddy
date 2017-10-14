@@ -24,5 +24,8 @@ urlpatterns = [
     url(r'^courses/(?P<id>[0-9]+)/$', views.get_courses),
     url(r'^courses/(?P<subject>\w+)/$', views.courses),
     url(r'^course/(?P<id>[0-9]+)/store/$', views.store_course),
-    url(r'^course/(?P<id>[0-9]+)/delete/(?P<subject>\w+)/(?P<number>[0-9]+)/$', views.delete_course)
+    url(r'^course/(?P<id>[0-9]+)/delete/(?P<subject>\w+)/(?P<number>[0-9]+)/$', views.delete_course),
+    url(r'^chatroom/create/(?P<id>[0-9]+)/$', views.create_chatroom),
+    url(r'^chatroom/(?P<name>\w+)/join/(?P<id>[0-9]+)/$', views.join_chatroom),
+    url(r'^chatroom/list/$', views.get_chatrooms)
 ]

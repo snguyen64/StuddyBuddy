@@ -7,8 +7,9 @@ from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
-from studdybuddy_api.models import Course
+from studdybuddy_api.models import Course, Room, Message
 from django.core.exceptions import ObjectDoesNotExist
+
 
 @csrf_exempt
 def register(request):
@@ -79,7 +80,6 @@ def store_course(request, id):
 @csrf_exempt
 def delete_course(request, id, subject, number):
     user = User.objects.get(id=id)
-    print(Course.objects.all())
     Course.objects.get(field=str(subject).upper(), number=number, user=user).delete()
     return JsonResponse({"success": True, "message": "Deleted course."})
 
@@ -89,3 +89,28 @@ def get_courses(request, id):
     user = User.objects.get(id=id)
     courseslist = [c.as_json() for c in list(Course.objects.filter(user=user).all())]
     return HttpResponse(json.dumps(courseslist), content_type="application/json")
+
+@csrf_exempt
+def create_chatroom(request, id):
+    user = User.objects.get(id=id)
+    body = json.loads(request.body.decode('utf-8'))
+    try:
+        oldroom = Room.objects.get(name=body['name'], course=body['course'])
+        return JsonResponse({"success": False, "message": "Room name already taken."})
+    except ObjectDoesNotExist:
+        chatroom = Room.objects.create(name=body['name'], course=body['course'])
+        chatroom.users.add(user)
+        return JsonResponse({"success": True, "message": "Added to chatroom."})
+
+@csrf_exempt
+def join_chatroom(request, name, id):
+    user = User.objects.get(id=id)
+    Room.objects.get(name=name).users.add(user)
+    return JsonResponse({"success": True, "message": "Joined chatroom."})
+
+@csrf_exempt
+def get_chatrooms(request):
+    body = json.loads(request.body.decode('utf-8'))
+    chatrooms = [cr.as_json() for cr in list(Room.objects.filter(course=body).all())]
+    print(json.dumps(chatrooms))
+    return HttpResponse(json.dumps(chatrooms), content_type="application/json")
