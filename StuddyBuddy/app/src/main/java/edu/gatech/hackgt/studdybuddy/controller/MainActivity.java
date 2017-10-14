@@ -26,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
     private Button register;
     private EditText user;
     private EditText pass;
+
+    public static int userId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,12 +54,24 @@ public class MainActivity extends AppCompatActivity {
                 && pass.getError() == null && !TextUtils.isEmpty(un)
                 && !TextUtils.isEmpty(pw);
         if (isValid) {
-            //check if valid in database
             LoginUser currentUser = new LoginUser(un, pw);
             APIClient.getInstance().login(currentUser).enqueue(new Callback<APIMessage>() {
                 @Override
                 public void onResponse(Call<APIMessage> call, Response<APIMessage> response) {
+                    if (!response.body().isSuccess()) {
+                        AlertDialog ad = new AlertDialog.Builder(MainActivity.this)
+                                .setMessage(response.body().getMessage())
+                                .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
 
+                                    }
+                                }).create();
+                        ad.show();
+                    } else {
+                        Intent intent = new Intent(MainActivity.this, CourseSelectionActivity.class);
+                        startActivity(intent);
+                    }
                 }
 
                 @Override
