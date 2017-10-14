@@ -29,4 +29,9 @@ public class Course {
     public void setCourseNumber(int courseNumber) {
         this.courseNumber = courseNumber;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(courseType) + " " + courseNumber;
+    }
 }
