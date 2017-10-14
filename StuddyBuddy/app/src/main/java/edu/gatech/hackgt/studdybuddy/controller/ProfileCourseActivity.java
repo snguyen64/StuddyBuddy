@@ -20,7 +20,7 @@ public class ProfileCourseActivity extends AppCompatActivity {
         addCourse = (Button) findViewById(R.id.addCourse);
         removeCourse = (Button) findViewById(R.id.removeCourse);
     }
-    
+
     public void findBuddies(View view) {
         Intent intent = new Intent(this, ChatRoomListActivity.class);
         startActivity(intent);
@@ -32,6 +32,7 @@ public class ProfileCourseActivity extends AppCompatActivity {
     }
 
     public void removeCourse(View view) {
+        //need to do stuff with this
         Intent intent = new Intent(this, CourseSelectionActivity.class);
         startActivity(intent);
     }
