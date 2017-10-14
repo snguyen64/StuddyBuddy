@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".controller.RegisterActivity" />
         <activity android:name=".controller.CourseSelectionActivity" />
-        <activity android:name=".controller.ProfileCourseActivity"></activity>
+        <activity android:name=".controller.ProfileCourseActivity" />
+        <activity android:name=".controller.ChatRoomListActivity"></activity>
     </application>
 
 </manifest>

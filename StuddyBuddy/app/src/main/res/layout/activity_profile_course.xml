@@ -6,4 +6,47 @@
     android:layout_height="match_parent"
     tools:context="edu.gatech.hackgt.studdybuddy.controller.ProfileCourseActivity">
 
+    <Button
+        android:id="@+id/findBuddiesButton"
+        android:onClick="findBuddies"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="Find Study Buddies"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="16dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/addCourse"
+        android:onClick="addCourse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Course"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/removeCourse"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/removeCourse" />
+
+    <Button
+        android:id="@+id/removeCourse"
+        android:onClick="removeCourse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove Course"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="211dp" />
+
 </android.support.constraint.ConstraintLayout>
