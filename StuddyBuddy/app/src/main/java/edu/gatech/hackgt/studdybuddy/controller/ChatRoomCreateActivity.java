@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import edu.gatech.hackgt.studdybuddy.R;
+import edu.gatech.hackgt.studdybuddy.model.Chatroom;
 import edu.gatech.hackgt.studdybuddy.model.Course;
 import edu.gatech.hackgt.studdybuddy.model.CourseType;
 import edu.gatech.hackgt.studdybuddy.util.APIClient;
@@ -85,7 +86,9 @@ public class ChatRoomCreateActivity extends AppCompatActivity {
         if (isValid) {
             //go into new chatroom
             //make the chatroom have a list of new users
+            Chatroom current = new Chatroom(name, course);
             Intent intent = new Intent(this, ActiveChatRoomActivity.class);
+            intent.putExtra("room", current);
             startActivity(intent);
         } else {
             Toast.makeText(this, "Information entered not valid", Toast.LENGTH_SHORT).show();

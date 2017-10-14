@@ -1,16 +1,20 @@
 package edu.gatech.hackgt.studdybuddy.model;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 import java.util.List;
 
-public class Chatroom {
+public class Chatroom implements Serializable{
+    @SerializedName("usersList")
     private List<User> users;
-    private CourseType courseType;
+    @SerializedName("course")
     private Course course;
+    @SerializedName("name")
     private String name;
 
-    public Chatroom(String name, CourseType courseType, Course course) {
+    public Chatroom(String name, Course course) {
         this.name = name;
-        this.courseType = courseType;
         this.course = course;
     }
 
@@ -35,14 +39,6 @@ public class Chatroom {
 
     public List<User> getUsers() {
         return users;
-    }
-
-    public CourseType getCourseType() {
-        return courseType;
-    }
-
-    public void setCourseType(CourseType courseType) {
-        this.courseType = courseType;
     }
 
     public String getName() {
