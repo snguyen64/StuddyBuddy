@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">StuddyBuddy</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="cancel">Cancel</string>
+    <string name="add">Add</string>
+    <string name="addCourse">Add Course</string>
+    <string name="removeCourse">Remove Course</string>
+    <string name="findStudyBuddies">Find Study Buddies</string>
+    <string name="remove">Remove</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
+    <string name="email">Email</string>
+    <string name="groupName">Group Name</string>
+
 </resources>
