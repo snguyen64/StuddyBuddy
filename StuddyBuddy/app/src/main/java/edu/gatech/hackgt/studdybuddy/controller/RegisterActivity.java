@@ -11,7 +11,7 @@ import android.widget.EditText;
 import edu.gatech.hackgt.studdybuddy.R;
 import edu.gatech.hackgt.studdybuddy.utils.FormValidator;
 
-public class RegisterActivity extends AppCompatActivity implements AsyncHandler<APIMessage> {
+public class RegisterActivity extends AppCompatActivity {
 
     private Button submit;
     private Button cancel;
@@ -67,7 +67,7 @@ public class RegisterActivity extends AppCompatActivity implements AsyncHandler<
         }
         boolean isValid = firstName.getError() == null && lastName.getError() == null
                 && username.getError() == null && password.getError() == null
-                && confirmPass.getError() == null && !TextUtils.isEmpty(firstN)
+                && confirmPass.getError() == null && !TextUtils.isEmpty(first)
                 && !TextUtils.isEmpty(last) && !TextUtils.isEmpty(user) && !TextUtils.isEmpty(pass)
                 && !TextUtils.isEmpty(confirmPW);
 
