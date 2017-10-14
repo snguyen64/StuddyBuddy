@@ -10,7 +10,7 @@ import retrofit2.Call;
 
 public interface APIService {
     @POST("auth/login")
-    Call<User> login(@Body LoginUser lu);
+    Call<APIMessage> login(@Body LoginUser lu);
 
     @POST("auth/register")
     Call<APIMessage> register(@Body User user);

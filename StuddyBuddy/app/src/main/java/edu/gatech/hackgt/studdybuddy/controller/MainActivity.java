@@ -1,6 +1,8 @@
 package edu.gatech.hackgt.studdybuddy.controller;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,8 +12,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import edu.gatech.hackgt.studdybuddy.R;
+import edu.gatech.hackgt.studdybuddy.model.APIMessage;
 import edu.gatech.hackgt.studdybuddy.model.LoginUser;
+import edu.gatech.hackgt.studdybuddy.model.User;
+import edu.gatech.hackgt.studdybuddy.util.APIClient;
 import edu.gatech.hackgt.studdybuddy.util.FormValidator;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private Button login;
@@ -45,9 +53,26 @@ public class MainActivity extends AppCompatActivity {
         if (isValid) {
             //check if valid in database
             LoginUser currentUser = new LoginUser(un, pw);
-            Toast.makeText(this, "Works, but have not checked database yet", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, ProfileCourseActivity.class);
-            startActivity(intent);
+            APIClient.getInstance().login(currentUser).enqueue(new Callback<APIMessage>() {
+                @Override
+                public void onResponse(Call<APIMessage> call, Response<APIMessage> response) {
+                    
+                }
+
+                @Override
+                public void onFailure(Call<APIMessage> call, Throwable t) {
+                    AlertDialog ad = new AlertDialog.Builder(MainActivity.this)
+                            .setMessage("An unexpected error occurred. Please try again later.")
+                            .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            }).create();
+                    ad.show();
+                }
+            });
+
         } else {
             Toast.makeText(this, "Username or Password invalid", Toast.LENGTH_SHORT).show();
         }

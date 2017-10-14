@@ -107,7 +107,7 @@ public class RegisterActivity extends AppCompatActivity {
                     } else {
                         int userId = Integer.parseInt(response.body().getMessage());
                         Intent intent = new Intent(RegisterActivity.this,
-                                CourseSelectionActivity.class);
+                                ProfileCourseActivity.class);
                         intent.putExtra("userId", userId);
                         startActivity(intent);
                     }
