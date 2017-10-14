@@ -34,7 +34,7 @@ public class ProfileCourseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_course);
         findBuddies = (Button) findViewById(R.id.findBuddiesButton);
         userName = (TextView) findViewById(R.id.user_name);
-        userName.setText(getIntent().getStringExtra("username"));
+        userName.setText(MainActivity.usern);
         addCourse = (Button) findViewById(R.id.addCourse);
         enrolledCourses = (RecyclerView) findViewById(R.id.enrolledCourses);
         enrolledLlm = new LinearLayoutManager(this);

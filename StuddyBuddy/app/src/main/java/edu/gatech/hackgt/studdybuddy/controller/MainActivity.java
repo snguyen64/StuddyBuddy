@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText pass;
 
     public static int userId;
+    public static String usern;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +71,8 @@ public class MainActivity extends AppCompatActivity {
                         ad.show();
                     } else {
                         userId = Integer.parseInt(response.body().getMessage());
+                        usern = un;
                         Intent intent = new Intent(MainActivity.this, ProfileCourseActivity.class);
-                        intent.putExtra("username", un);
                         startActivity(intent);
                     }
                 }
