@@ -34,4 +34,16 @@ public class Course {
     public String toString() {
         return String.valueOf(courseType) + " " + courseNumber;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Course course = (Course) o;
+
+        return courseNumber == course.courseNumber && courseType == course.courseType;
+
+    }
+
 }

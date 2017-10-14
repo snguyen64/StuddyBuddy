@@ -38,8 +38,13 @@ public class CourseAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return courseList.size();
     }
+
+    public List<Course> getCourseList() {
+        return courseList;
+    }
+
     private static class DataViewHolder extends RecyclerView.ViewHolder {
         private TextView course;
         public DataViewHolder(View itemView) {

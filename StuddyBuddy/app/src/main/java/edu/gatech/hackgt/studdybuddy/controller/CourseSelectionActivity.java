@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -30,6 +31,8 @@ public class CourseSelectionActivity extends AppCompatActivity {
     private Spinner courseTypeSpinner;
     private Spinner courseNumberSpinner;
 
+    private Button addButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +40,8 @@ public class CourseSelectionActivity extends AppCompatActivity {
         courseAddView = (RecyclerView) findViewById(R.id.addedCourseView);
         courseAddViewManager = new LinearLayoutManager(this);
         courseAdapter = new CourseAdapter(new ArrayList<Course>());
+        courseAddView.setLayoutManager(courseAddViewManager);
+        courseAddView.setAdapter(courseAdapter);
 
         courseTypeSpinner = (Spinner) findViewById(R.id.courseType);
         ArrayAdapter<CourseType> courseTypeArrayAdapter = new ArrayAdapter<CourseType>(this,
@@ -49,7 +54,7 @@ public class CourseSelectionActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 CourseType ct = (CourseType) adapterView.getItemAtPosition(i);
-                String coty = String.valueOf(ct);
+                String coty = String.valueOf(ct).toLowerCase();
                 APIClient.getInstance().getCoursesByType(coty).enqueue(new Callback<List<Integer>>() {
                     @Override
                     public void onResponse(Call<List<Integer>> call, Response<List<Integer>> response) {
@@ -69,6 +74,19 @@ public class CourseSelectionActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+            }
+        });
+
+        addButton = (Button) findViewById(R.id.addButton);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Course course = new Course((CourseType) courseTypeSpinner.getSelectedItem(),
+                        (Integer) courseNumberSpinner.getSelectedItem());
+                if (!courseAdapter.getCourseList().contains(course)) {
+                    courseAdapter.getCourseList().add(course);
+                    courseAdapter.notifyItemInserted(courseAdapter.getCourseList().size() - 1);
+                }
             }
         });
     }
