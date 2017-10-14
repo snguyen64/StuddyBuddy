@@ -5,6 +5,7 @@
     <string name="confirmPassword">Confirm Password</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
+    <string name="newUser">New User? Sign up here</string>
     <string name="cancel">Cancel</string>
     <string name="add">Add</string>
     <string name="addCourse">Add Course</string>
