@@ -22,17 +22,17 @@
     <Button
         android:id="@+id/addCourse"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="235dp"
-        android:layout_marginStart="1dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="2dp"
         android:background="null"
         android:onClick="addCourse"
         android:text="@string/addCourse"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="@+id/enrolledCourses"
         app:layout_constraintLeft_toRightOf="@+id/additionImage"
         tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1" />
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/enrolledCourses" />
 
     <ImageView
         android:id="@+id/profilePic"
@@ -88,12 +88,12 @@
         android:id="@+id/additionImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
+        android:layout_marginBottom="3dp"
         android:layout_marginStart="30dp"
         android:contentDescription="@string/addition_symbol"
         app:layout_constraintBottom_toTopOf="@+id/enrolledCourses"
         app:layout_constraintLeft_toRightOf="@+id/coursesText"
-        app:srcCompat="@drawable/ic_blue_add" />
+        app:srcCompat="@drawable/ic_blue_add"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/enrolledCourses"

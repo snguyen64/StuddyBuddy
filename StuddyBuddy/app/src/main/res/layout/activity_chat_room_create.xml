@@ -29,33 +29,40 @@
 
     <Spinner
         android:id="@+id/courseType"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="30dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="30dp"
         android:background="@color/cardview_light_background"
         android:popupBackground="@color/cardview_light_background"
+        app:layout_constraintHorizontal_bias="0.294"
+        app:layout_constraintLeft_toRightOf="@+id/subjectText"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cancel"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1"
-        tools:layout_editor_absoluteY="114dp"
-        app:layout_constraintLeft_toRightOf="@+id/subjectText"
-        app:layout_constraintRight_toRightOf="parent"/>
+        android:layout_marginRight="20dp" />
 
     <Spinner
         android:id="@+id/course"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="30dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
         android:background="@color/cardview_light_background"
         android:popupBackground="@color/cardview_light_background"
+        app:layout_constraintHorizontal_bias="0.014"
+        app:layout_constraintLeft_toRightOf="@+id/courseNumber"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subjectText"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="180dp"
-        app:layout_constraintLeft_toRightOf="@+id/courseNumber"
-        android:layout_marginLeft="8dp" />
+        android:layout_marginRight="20dp" />
 
     <Button
         android:id="@+id/submit"
@@ -75,26 +82,32 @@
 
     <Button
         android:id="@+id/cancel"
-        android:onClick="cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cancel"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
         android:layout_marginEnd="8dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-4dp" />
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="10dp"
+        android:background="null"
+        android:onClick="cancel"
+        android:text="@string/back"
+        android:textColor="@color/cardview_light_background"
+        app:layout_constraintLeft_toRightOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <TextView
         android:id="@+id/subjectText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
+        android:layout_marginLeft="40dp"
         android:text="@string/subject"
+        android:textColor="@color/cardview_light_background"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        tools:layout_editor_absoluteY="112dp" />
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/cancel" />
 
     <TextView
         android:id="@+id/courseNumber"
@@ -102,7 +115,36 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
         android:text="@string/courseNumber"
+        android:textColor="@color/cardview_light_background"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        tools:layout_editor_absoluteY="178dp" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/subjectText" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_back_arrow_white"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="10dp"
+        android:text="New Chat"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.501" />
 </android.support.constraint.ConstraintLayout>
