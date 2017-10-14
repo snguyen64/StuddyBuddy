@@ -25,14 +25,14 @@
         android:layout_height="35dp"
         android:layout_marginBottom="2dp"
         android:layout_marginStart="2dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/cardview_light_background"
         android:onClick="addCourse"
         android:text="@string/addCourse"
         android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/enrolledCourses"
         app:layout_constraintLeft_toRightOf="@+id/additionImage"
         tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/enrolledCourses" />
+        tools:layout_constraintLeft_creator="1" />
 
     <ImageView
         android:id="@+id/profilePic"
