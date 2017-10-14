@@ -93,7 +93,6 @@ public class ChatRoomListActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     public void createRoom(View view) {

@@ -39,7 +39,7 @@ public class ChatRoomCreateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat_room_create);
         chatroomName = (EditText) findViewById(R.id.chatroomName);
         courseType = (Spinner) findViewById(R.id.courseType);
-        ArrayAdapter<CourseType> courseTypeArrayAdapter = new ArrayAdapter<CourseType>(this,
+        ArrayAdapter<CourseType> courseTypeArrayAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, CourseType.values());
         courseType.setAdapter(courseTypeArrayAdapter);
         courseSpinner = (Spinner) findViewById(R.id.course);

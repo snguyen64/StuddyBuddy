@@ -50,8 +50,6 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
         manager.setReverseLayout(false);
         manager.setStackFromEnd(true);
         messages.setLayoutManager(manager);
-
-
     }
 
     public void sendMessage(View view) {

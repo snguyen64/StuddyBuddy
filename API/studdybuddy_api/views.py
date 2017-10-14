@@ -90,6 +90,7 @@ def get_courses(request, id):
     courseslist = [c.as_json() for c in list(Course.objects.filter(user=user).all())]
     return HttpResponse(json.dumps(courseslist), content_type="application/json")
 
+
 @csrf_exempt
 def create_chatroom(request, id):
     user = User.objects.get(id=id)
@@ -102,15 +103,23 @@ def create_chatroom(request, id):
         chatroom.users.add(user)
         return JsonResponse({"success": True, "message": "Added to chatroom."})
 
+
 @csrf_exempt
 def join_chatroom(request, name, id):
     user = User.objects.get(id=id)
     Room.objects.get(name=name).users.add(user)
     return JsonResponse({"success": True, "message": "Joined chatroom."})
 
+
 @csrf_exempt
 def get_chatrooms(request):
     body = json.loads(request.body.decode('utf-8'))
     chatrooms = [cr.as_json() for cr in list(Room.objects.filter(course=body).all())]
-    print(json.dumps(chatrooms))
     return HttpResponse(json.dumps(chatrooms), content_type="application/json")
+
+
+@csrf_exempt
+def get_messages(request, name):
+    room = Room.objects.get(name=name)
+    messages = [m.as_json() for m in list(Message.objects.filter(room=room).all())]
+    return HttpResponse(json.dumps(messages), content_type="application/json")

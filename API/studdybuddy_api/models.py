@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from jsonfield import JSONField
+from django.utils.timezone import now
+
 
 class Course(models.Model):
     field = models.CharField(max_length=4)
@@ -32,6 +34,13 @@ class Room(models.Model):
 
 class Message(models.Model):
     user = models.ForeignKey(User)
-    timestamp = models.DateTimeField()
+    timestamp = models.DateTimeField(now())
     room = models.ForeignKey(Room)
     text = models.TextField()
+
+    def as_json(self):
+        return dict(
+            username=self.user.values('username'),
+            message=self.text,
+            timestamp=self.timestamp
+        )

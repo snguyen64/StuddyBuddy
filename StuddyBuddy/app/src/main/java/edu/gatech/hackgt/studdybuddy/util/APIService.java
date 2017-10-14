@@ -3,6 +3,7 @@ package edu.gatech.hackgt.studdybuddy.util;
 import java.util.List;
 
 import edu.gatech.hackgt.studdybuddy.model.APIMessage;
+import edu.gatech.hackgt.studdybuddy.model.ChatMessage;
 import edu.gatech.hackgt.studdybuddy.model.Chatroom;
 import edu.gatech.hackgt.studdybuddy.model.Course;
 import edu.gatech.hackgt.studdybuddy.model.CourseType;
@@ -43,4 +44,7 @@ public interface APIService {
 
     @POST("chatroom/list/")
     Call<List<Chatroom>> getListofChatroomsByCourse(@Body Course course);
+
+    @GET("chatroom/messages/{name}")
+    Call<List<ChatMessage>> getChatMessages(@Path("name") String name);
 }
