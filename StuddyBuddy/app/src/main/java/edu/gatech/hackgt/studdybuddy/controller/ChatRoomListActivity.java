@@ -1,5 +1,6 @@
 package edu.gatech.hackgt.studdybuddy.controller;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,7 +42,15 @@ public class ChatRoomListActivity extends AppCompatActivity {
 
         chatroomView = (RecyclerView) findViewById(R.id.onlineChatroom);
         chatroomLayoutManager = new LinearLayoutManager(this);
-        chatroomAdapter = new ChatroomAdapter(new ArrayList<Chatroom>());
+        chatroomAdapter = new ChatroomAdapter(new ArrayList<Chatroom>(), new ChatroomAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Chatroom chat) {
+                Context context = chatroomView.getContext();
+                Intent intent = new Intent(context, ActiveChatRoomActivity.class);
+                intent.putExtra("room", chat);
+                startActivity(intent);
+            }
+        });
 
         chatroomView.setAdapter(chatroomAdapter);
         chatroomView.setLayoutManager(chatroomLayoutManager);
