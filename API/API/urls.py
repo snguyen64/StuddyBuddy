@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from studdybuddy_api import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^auth/register/', views.register)
+
 ]
