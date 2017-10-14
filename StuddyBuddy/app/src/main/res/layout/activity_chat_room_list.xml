@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context="edu.gatech.hackgt.studdybuddy.controller.ChatRoomListActivity">
 
+    <Button
+        android:id="@+id/createChatRoom"
+        android:onClick="createRoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Chatroom"
+        tools:layout_editor_absoluteX="211dp"
+        tools:layout_editor_absoluteY="16dp" />
 </android.support.constraint.ConstraintLayout>
