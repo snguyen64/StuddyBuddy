@@ -54,7 +54,7 @@
         tools:layout_constraintTop_creator="1"
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_editor_absoluteY="180dp"
-        app:layout_constraintLeft_toRightOf="@+id/courseNumberText"
+        app:layout_constraintLeft_toRightOf="@+id/courseNumber"
         android:layout_marginLeft="8dp" />
 
     <Button
@@ -97,7 +97,7 @@
         tools:layout_editor_absoluteY="112dp" />
 
     <TextView
-        android:id="@+id/courseNumberText"
+        android:id="@+id/courseNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"

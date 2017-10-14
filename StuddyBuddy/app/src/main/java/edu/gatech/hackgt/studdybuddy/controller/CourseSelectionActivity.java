@@ -97,7 +97,7 @@ public class CourseSelectionActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, CourseType.values());
         courseTypeSpinner.setAdapter(courseTypeArrayAdapter);
 
-        courseNumberSpinner = (Spinner) findViewById(R.id.courseNumberText);
+        courseNumberSpinner = (Spinner) findViewById(R.id.courseNumber);
 
         courseTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

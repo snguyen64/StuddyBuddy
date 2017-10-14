@@ -8,77 +8,61 @@
 
     <Button
         android:id="@+id/findBuddiesButton"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginEnd="8dp"
         android:onClick="findBuddies"
         android:text="@string/findStudyBuddies"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_editor_absoluteY="259dp" />
+        android:layout_marginTop="7dp"
+        app:layout_constraintTop_toBottomOf="@+id/user_name"
+        app:layout_constraintLeft_toRightOf="@+id/profilePic"
+        android:layout_marginStart="0dp"/>
 
     <Button
         android:id="@+id/addCourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginBottom="235dp"
+        android:layout_marginStart="1dp"
+        android:background="null"
         android:onClick="addCourse"
         android:text="@string/addCourse"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/enrolledCourses"
+        app:layout_constraintLeft_toRightOf="@+id/additionImage"
         tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_editor_absoluteY="333dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/enrolledCourses"
-        android:layout_width="361dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginStart="15dp"
-        android:background="@color/cardview_light_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1" />
+        tools:layout_constraintLeft_creator="1" />
 
     <ImageView
         android:id="@+id/profilePic"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:contentDescription="profile picture"
-        app:srcCompat="@drawable/ic_duck_profile_pic"
-        tools:layout_editor_absoluteX="92dp"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/user_name" />
+        android:contentDescription="@string/profile_picture"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileText"
+        app:srcCompat="@drawable/ic_duck_profile_pic" />
 
     <TextView
         android:id="@+id/user_name"
-        android:layout_width="368dp"
-        android:layout_height="wrap_content"
+        android:layout_width="152dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         android:text="@string/username"
         android:textAlignment="textStart"
         android:textSize="30sp"
-        android:layout_marginTop="5dp"
+        app:layout_constraintLeft_toRightOf="@+id/profilePic"
         app:layout_constraintTop_toBottomOf="@+id/profileText"
-        android:layout_marginLeft="5dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/profileText"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="0dp"
         android:background="@color/colorPrimary"
         android:padding="5dp"
         android:text="@string/profile"
@@ -92,9 +76,44 @@
         android:id="@+id/coursesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
         android:text="@string/courses"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="355dp" />
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profilePic" />
+
+    <ImageView
+        android:id="@+id/additionImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginStart="30dp"
+        android:contentDescription="@string/addition_symbol"
+        app:layout_constraintBottom_toTopOf="@+id/enrolledCourses"
+        app:layout_constraintLeft_toRightOf="@+id/coursesText"
+        app:srcCompat="@drawable/ic_blue_add" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/enrolledCourses"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/cardview_light_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coursesText"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
 
 </android.support.constraint.ConstraintLayout>
