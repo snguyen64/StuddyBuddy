@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             APIClient.getInstance().login(currentUser).enqueue(new Callback<APIMessage>() {
                 @Override
                 public void onResponse(Call<APIMessage> call, Response<APIMessage> response) {
-                    if (!response.body().isSuccess()) {
+                    if (response.isSuccessful() && !response.body().isSuccess()) {
                         AlertDialog ad = new AlertDialog.Builder(MainActivity.this)
                                 .setMessage(response.body().getMessage())
                                 .setNeutralButton("OK", new DialogInterface.OnClickListener() {
@@ -69,7 +69,8 @@ public class MainActivity extends AppCompatActivity {
                                 }).create();
                         ad.show();
                     } else {
-                        Intent intent = new Intent(MainActivity.this, CourseSelectionActivity.class);
+                        userId = Integer.parseInt(response.body().getMessage());
+                        Intent intent = new Intent(MainActivity.this, ProfileCourseActivity.class);
                         startActivity(intent);
                     }
                 }

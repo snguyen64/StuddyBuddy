@@ -21,5 +21,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^auth/register/$', views.register),
     url(r'^auth/login/$', views.login),
-    url(r'^courses/(?P<subject>\w+)/$', views.courses)
+    url(r'^courses/(?P<id>[0-9]+)/$', views.get_courses),
+    url(r'^courses/(?P<subject>\w+)/$', views.courses),
+    url(r'^course/(?P<id>[0-9]+)/store/$', views.store_course),
+    url(r'^course/(?P<id>[0-9]+)/delete/(?P<subject>\w+)/(?P<number>[0-9]+)/$', views.delete_course)
 ]

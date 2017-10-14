@@ -8,4 +8,5 @@ API/Lib
 API/pyvenv.cfg
 API/API/__pycache__
 API/studdybuddy_api/__pycache__/*
+API/migrations/__pycache__/*
 API/db.sqlite3
