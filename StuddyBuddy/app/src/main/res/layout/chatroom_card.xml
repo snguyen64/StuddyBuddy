@@ -11,14 +11,15 @@
         android:layout_margin="10dp">
 
         <ImageView
-            android:id="@+id/groupPic"
+            android:id="@+id/profilePic"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginLeft="0dp"
             android:layout_marginTop="0dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/sym_def_app_icon" />
+            app:srcCompat="@android:drawable/sym_def_app_icon"
+            android:contentDescription="" />
 
         <TextView
             android:id="@+id/username"
@@ -29,7 +30,7 @@
             android:text="@string/groupName"
             android:textAlignment="inherit"
             android:textSize="18sp"
-            app:layout_constraintLeft_toRightOf="@+id/groupPic"
+            app:layout_constraintLeft_toRightOf="@+id/profilePic"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -39,7 +40,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:text="TextView"
-            app:layout_constraintLeft_toRightOf="@+id/groupPic"
+            app:layout_constraintLeft_toRightOf="@+id/profilePic"
             app:layout_constraintTop_toBottomOf="@+id/username" />
     </android.support.constraint.ConstraintLayout>
 

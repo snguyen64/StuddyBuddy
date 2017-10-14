@@ -17,32 +17,35 @@
         android:ems="10"
         android:hint="@string/firstName"
         android:inputType="textPersonName"
+        android:padding="3dp"
         android:scrollHorizontally="true"
         android:singleLine="false"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1"
-        app:layout_constraintHorizontal_bias="0.502" />
+        tools:layout_constraintTop_creator="1" />
 
     <EditText
         android:id="@+id/lastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="@color/cardview_light_background"
         android:ems="10"
         android:hint="@string/lastName"
         android:inputType="textPersonName"
+        android:padding="3dp"
         android:typeface="sans"
         app:layout_constraintLeft_toLeftOf="@+id/firstName"
         app:layout_constraintRight_toRightOf="@+id/firstName"
         app:layout_constraintTop_toBottomOf="@+id/firstName"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <EditText
         android:id="@+id/usernameText"
@@ -53,14 +56,15 @@
         android:ems="10"
         android:hint="@string/username"
         android:inputType="textPersonName"
+        android:padding="3dp"
         android:typeface="sans"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/lastName"
         app:layout_constraintRight_toRightOf="@+id/lastName"
         app:layout_constraintTop_toBottomOf="@+id/lastName"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1"
-        app:layout_constraintHorizontal_bias="0.0" />
+        tools:layout_constraintTop_creator="1" />
 
     <Button
         android:id="@+id/submit"
@@ -88,14 +92,15 @@
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
+        android:padding="3dp"
         android:typeface="sans"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/usernameText"
         app:layout_constraintRight_toRightOf="@+id/usernameText"
         app:layout_constraintTop_toBottomOf="@+id/usernameText"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1"
-        app:layout_constraintHorizontal_bias="0.0" />
+        tools:layout_constraintTop_creator="1" />
 
     <EditText
         android:id="@+id/confirmPassText"
@@ -106,6 +111,7 @@
         android:ems="10"
         android:hint="@string/confirmPassword"
         android:inputType="textPassword"
+        android:padding="3dp"
         android:typeface="sans"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/passwordText"
@@ -119,18 +125,20 @@
         android:id="@+id/emailText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="@color/cardview_light_background"
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textPersonName"
+        android:padding="3dp"
         android:typeface="sans"
         app:layout_constraintLeft_toLeftOf="@+id/confirmPassText"
         app:layout_constraintRight_toRightOf="@+id/confirmPassText"
         app:layout_constraintTop_toBottomOf="@+id/confirmPassText"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <ImageButton
         android:id="@+id/cancel"
@@ -144,5 +152,13 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back_arrow_white" />
+
+    <TextView
+        android:id="@+id/subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="16dp" />
 
 </android.support.constraint.ConstraintLayout>

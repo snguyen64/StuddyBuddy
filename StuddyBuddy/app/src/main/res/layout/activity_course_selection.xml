@@ -4,94 +4,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:padding="10dp"
     tools:context="edu.gatech.hackgt.studdybuddy.controller.CourseSelectionActivity">
 
     <Spinner
         android:id="@+id/courseType"
-        android:layout_width="0dp"
+        android:layout_width="150dp"
         android:layout_height="32dp"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="16dp"
+        android:background="@color/cardview_light_background"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/courseNumber"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="1.0" />
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/subject"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <Spinner
         android:id="@+id/courseNumber"
-        android:layout_width="204dp"
+        android:layout_width="150dp"
         android:layout_height="32dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintHorizontal_bias="0.928"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="0dp"
+        android:background="@color/cardview_light_background"
+        app:layout_constraintLeft_toRightOf="@+id/courseType"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/courseNumberText"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.5" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/addedCourseView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="51dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="52dp"
+        android:layout_height="300dp"
+        android:background="@color/cardview_light_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addButton"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        tools:layout_constraintLeft_creator="1" />
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <Button
         android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/add"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/courseType"
         android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.135"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintBottom_toTopOf="@+id/addedCourseView" />
 
     <Button
         android:id="@+id/goToDashboard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginTop="8dp"
         android:text="Dashboard"
-        android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/courseNumber"
         app:layout_constraintLeft_toRightOf="@+id/addButton"
         android:layout_marginLeft="8dp"
-        app:layout_constraintHorizontal_bias="0.559"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="79dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.0"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintBottom_toTopOf="@+id/addedCourseView" />
+
+    <TextView
+        android:id="@+id/subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/subject"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/courseNumberText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/subject"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.457" />
 
 </android.support.constraint.ConstraintLayout>
