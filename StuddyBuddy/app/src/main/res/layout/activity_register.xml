@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.gatech.hackgt.studdybuddy.RegisterActivity">
+    tools:context="edu.gatech.hackgt.studdybuddy.controller.RegisterActivity">
 
     <EditText
         android:id="@+id/usernameText"
