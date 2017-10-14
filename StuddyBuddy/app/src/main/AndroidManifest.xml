@@ -22,7 +22,8 @@
         <activity android:name=".controller.CourseSelectionActivity" />
         <activity android:name=".controller.ProfileCourseActivity" />
         <activity android:name=".controller.ChatRoomListActivity" />
-        <activity android:name=".controller.ChatRoomCreateActivity"></activity>
+        <activity android:name=".controller.ChatRoomCreateActivity" />
+        <activity android:name=".controller.ActiveChatRoomActivity"></activity>
     </application>
 
 </manifest>
