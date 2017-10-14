@@ -36,4 +36,12 @@ public class RegisterActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    public void submit(View view) {
+        String first = firstName.getText().toString();
+        String last = lastName.getText().toString();
+        String user = username.getText().toString();
+        String pass = password.getText().toString();
+        String confirmPass = 
+    }
 }
