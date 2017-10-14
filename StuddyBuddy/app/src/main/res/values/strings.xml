@@ -4,7 +4,7 @@
     <string name="password">Password</string>
     <string name="confirmPassword">Confirm Password</string>
     <string name="login">Login</string>
-    <string name="welcome">Welcome</string>
+    <string name="welcome">Welcome!</string>
     <string name="register">Register</string>
     <string name="newUser">New User? Sign up here</string>
     <string name="cancel">Cancel</string>
@@ -22,4 +22,7 @@
     <string name="courseNumber">Course Number</string>
     <string name="courses">Courses</string>
     <string name="newChat">New Chat</string>
+    <string name="done">Done</string>
+    <string name="registration">Registration</string>
+    <string name="profile">Profile</string>
 </resources>

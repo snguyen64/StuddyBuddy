@@ -51,34 +51,33 @@
         android:inputType="textPersonName"
         android:onClick="sendMessage"
         android:padding="3dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/messagesView"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="6dp" />
 
     <ImageButton
         android:id="@+id/sendMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:background="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/textMessage"
         app:srcCompat="@drawable/ic_white_send"
         android:layout_marginEnd="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.692"
+        app:layout_constraintHorizontal_bias="0.458"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/messagesView" />
+        app:layout_constraintTop_toBottomOf="@+id/messagesView"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="5dp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/messagesView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="427dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
         android:layout_marginTop="20dp"
         android:background="@color/cardview_light_background"
         android:padding="5dp"
