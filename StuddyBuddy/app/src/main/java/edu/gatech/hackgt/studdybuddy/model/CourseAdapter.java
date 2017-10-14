@@ -33,6 +33,7 @@ public class CourseAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         DataViewHolder dvh = (DataViewHolder) holder;
         final Course rd = courseList.get(position);
+        dvh.course.setText(rd.toString());
     }
 
     @Override
