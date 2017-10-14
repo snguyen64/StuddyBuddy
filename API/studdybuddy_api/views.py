@@ -4,9 +4,10 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 
-# Create your views here.
+@csrf_exempt
 def register(request):
     body = json.loads(request.body.decode('utf-8'))
     firstName = body["firstName"]
@@ -16,9 +17,10 @@ def register(request):
     email = body["email"]
     user = User.objects.create_user(username, email=email, password=password, first_name=firstName, last_name=lastName)
     user.save()
-    return JsonResponse({"success": True, "message": "Successfully registered user."})
+    return JsonResponse({"success": True, "message": user.id})
 
 
+@csrf_exempt
 def login(request):
     body = json.loads(request.body.decode('utf-8'))
     username = body["username"]

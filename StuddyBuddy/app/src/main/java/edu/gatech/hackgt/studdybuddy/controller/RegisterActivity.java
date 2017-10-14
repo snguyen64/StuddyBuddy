@@ -6,6 +6,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -90,7 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
                 && !TextUtils.isEmpty(confirmPW);
 
         if (isValid) {
-            User userr = new User(first, last, user, pass);
+            User userr = new User(first, last, user, pass, em);
             APIClient.getInstance().register(userr).enqueue(new Callback<APIMessage>() {
                 @Override
                 public void onResponse(Call<APIMessage> call, Response<APIMessage> response) {
@@ -115,6 +116,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<APIMessage> call, Throwable t) {
+                    Log.e("RegisterActivity", t.getMessage());
                     AlertDialog ad = new AlertDialog.Builder(RegisterActivity.this)
                             .setMessage("An unexpected error occurred. Please try again later.")
                             .setNeutralButton("OK", new DialogInterface.OnClickListener() {
