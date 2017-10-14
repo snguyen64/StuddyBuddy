@@ -21,6 +21,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static edu.gatech.hackgt.studdybuddy.controller.MainActivity.userId;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private Button submit;
@@ -95,7 +97,7 @@ public class RegisterActivity extends AppCompatActivity {
             APIClient.getInstance().register(userr).enqueue(new Callback<APIMessage>() {
                 @Override
                 public void onResponse(Call<APIMessage> call, Response<APIMessage> response) {
-                    if (!response.body().isSuccess()) {
+                    if (response.isSuccessful() && !response.body().isSuccess()) {
                         AlertDialog ad = new AlertDialog.Builder(RegisterActivity.this)
                                 .setMessage(response.body().getMessage())
                                 .setNeutralButton("OK", new DialogInterface.OnClickListener() {
@@ -106,10 +108,9 @@ public class RegisterActivity extends AppCompatActivity {
                                 }).create();
                         ad.show();
                     } else {
-                        int userId = Integer.parseInt(response.body().getMessage());
+                        userId = Integer.parseInt(response.body().getMessage());
                         Intent intent = new Intent(RegisterActivity.this,
-                                ProfileCourseActivity.class);
-                        intent.putExtra("userId", userId);
+                                CourseSelectionActivity.class);
                         startActivity(intent);
                     }
                 }

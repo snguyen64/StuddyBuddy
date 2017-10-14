@@ -6,10 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
-import java.util.Locale;
 
 import edu.gatech.hackgt.studdybuddy.R;
 
@@ -43,6 +40,10 @@ public class CourseAdapter extends RecyclerView.Adapter {
 
     public List<Course> getCourseList() {
         return courseList;
+    }
+
+    public void setCourseList(List<Course> courseList) {
+        this.courseList = courseList;
     }
 
     private static class DataViewHolder extends RecyclerView.ViewHolder {

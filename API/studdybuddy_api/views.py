@@ -3,11 +3,12 @@ import json
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
-
+from studdybuddy_api.models import Course
+from django.core.exceptions import ObjectDoesNotExist
 
 @csrf_exempt
 def register(request):
@@ -17,17 +18,22 @@ def register(request):
     username = body["username"]
     password = body["password"]
     email = body["email"]
-    user = User.objects.create_user(username, email=email, password=password, first_name=firstName, last_name=lastName)
-    return JsonResponse({"success": True, "message": user.id})
+    try:
+        olduser = User.objects.get_by_natural_key(username)
+        if olduser is not None:
+            return JsonResponse({"success": False, "message": "Username already taken."})
+    except ObjectDoesNotExist:
+        user = User.objects.create_user(username, email=email, password=password, first_name=firstName,
+                                        last_name=lastName)
+        print(user.id)
+        return JsonResponse({"success": True, "message": user.id})
 
 
 @csrf_exempt
 def login(request):
     body = json.loads(request.body.decode('utf-8'))
     username = body["username"]
-    print(username)
     password = body["password"]
-    print(password)
     user = authenticate(username=username, password=password)
     if user is not None:
         return JsonResponse({"success": True, "message": user.id})
@@ -59,6 +65,27 @@ def courses(request, subject):
         if 'X' not in course:
             coursenumber = int(course)
             courseList.append(coursenumber)
-        else:
-            print("This is a transfer credit course:" + subject + course)
     return JsonResponse(courseList, safe=False)
+
+
+@csrf_exempt
+def store_course(request, id):
+    body = json.loads(request.body.decode('utf-8'))
+    user = User.objects.get(id=id)
+    Course.objects.create(field=body["courseType"], number=body["courseNumber"], user=user)
+    return JsonResponse({"success": True, "message": "Stored course."})
+
+
+@csrf_exempt
+def delete_course(request, id, subject, number):
+    user = User.objects.get(id=id)
+    print(Course.objects.all())
+    Course.objects.get(field=str(subject).upper(), number=number, user=user).delete()
+    return JsonResponse({"success": True, "message": "Deleted course."})
+
+
+@csrf_exempt
+def get_courses(request, id):
+    user = User.objects.get(id=id)
+    courseslist = [c.as_json() for c in list(Course.objects.filter(user=user).all())]
+    return HttpResponse(json.dumps(courseslist), content_type="application/json")
