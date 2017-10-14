@@ -16,9 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.LoginActivity" />
         <activity android:name=".controller.RegisterActivity" />
-        <activity android:name=".controller.CourseSelectionActivity"></activity>
+        <activity android:name=".controller.CourseSelectionActivity" />
+        <activity android:name=".controller.ProfileCourseActivity"></activity>
     </application>
 
 </manifest>
