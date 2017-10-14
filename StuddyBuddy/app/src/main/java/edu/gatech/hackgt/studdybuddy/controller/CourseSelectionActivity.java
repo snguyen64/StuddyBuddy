@@ -73,7 +73,6 @@ public class CourseSelectionActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                Toast.makeText(CourseSelectionActivity.this, "On Swiped", Toast.LENGTH_LONG).show();
                 int index = viewHolder.getAdapterPosition();
                 Course c = courseAdapter.getCourseList().remove(index);
                 courseAdapter.notifyItemRemoved(index);

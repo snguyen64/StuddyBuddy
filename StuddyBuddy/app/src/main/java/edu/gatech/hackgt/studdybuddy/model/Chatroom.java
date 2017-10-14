@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Chatroom implements Serializable{
     @SerializedName("usersList")
-    private List<User> users;
+    private List<ChatroomUser> users;
     @SerializedName("course")
     private Course course;
     @SerializedName("name")
@@ -18,13 +18,6 @@ public class Chatroom implements Serializable{
         this.course = course;
     }
 
-    public void addUser(User user) {
-        users.add(user);
-    }
-    public void removeUser(User user) {
-        users.remove(user);
-    }
-
     public Course getCourse() {
         return course;
     }
@@ -33,11 +26,11 @@ public class Chatroom implements Serializable{
         this.course = course;
     }
 
-    public void setUsers(List<User> users) {
+    public void setUsers(List<ChatroomUser> users) {
         this.users = users;
     }
 
-    public List<User> getUsers() {
+    public List<ChatroomUser> getUsers() {
         return users;
     }
 

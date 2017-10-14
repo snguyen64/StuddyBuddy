@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from jsonfield import JSONField
 
 class Course(models.Model):
     field = models.CharField(max_length=4)
@@ -15,3 +15,23 @@ class Course(models.Model):
 
     class Meta:
         unique_together = ("field", "number", "user")
+
+
+class Room(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+    course = JSONField()
+    users = models.ManyToManyField(User)
+
+    def as_json(self):
+        return dict(
+            name=self.name,
+            course=self.course,
+            usersList=list(self.users.all().values('id', 'username'))
+        )
+
+
+class Message(models.Model):
+    user = models.ForeignKey(User)
+    timestamp = models.DateTimeField()
+    room = models.ForeignKey(Room)
+    text = models.TextField()
