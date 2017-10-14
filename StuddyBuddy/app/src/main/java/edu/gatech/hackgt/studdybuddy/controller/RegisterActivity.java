@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import edu.gatech.hackgt.studdybuddy.R;
 import edu.gatech.hackgt.studdybuddy.model.APIMessage;
@@ -116,6 +117,8 @@ public class RegisterActivity extends AppCompatActivity {
                     ad.show();
                 }
             });
+        } else {
+            Toast.makeText(this, "One or more fields is invalid", Toast.LENGTH_SHORT).show();
         }
     }
 }

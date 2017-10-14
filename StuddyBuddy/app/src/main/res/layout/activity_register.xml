@@ -13,8 +13,13 @@
         android:ems="10"
         android:hint="First Name"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="33dp" />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="33dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/lastName"
@@ -23,8 +28,13 @@
         android:ems="10"
         android:hint="Last Name"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="97dp" />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/firstName"
+        android:layout_marginTop="21dp"
+        app:layout_constraintTop_toBottomOf="@+id/firstName"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/firstName" />
 
     <EditText
         android:id="@+id/usernameText"
@@ -33,36 +43,23 @@
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="158dp" />
-
-    <EditText
-        android:id="@+id/passwordText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="215dp" />
-
-    <EditText
-        android:id="@+id/confirmPassText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="confirmPass"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="83dp"
-        tools:layout_editor_absoluteY="273dp" />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/lastName"
+        android:layout_marginTop="18dp"
+        app:layout_constraintTop_toBottomOf="@+id/lastName"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/lastName" />
 
     <Button
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="364dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/cancel"
+        tools:layout_constraintBaseline_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/confirmPassText" />
 
     <Button
         android:id="@+id/cancel"
@@ -70,6 +67,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"
-        tools:layout_editor_absoluteX="211dp"
-        tools:layout_editor_absoluteY="364dp" />
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="39dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toRightOf="@+id/submit"
+        android:layout_marginTop="41dp"
+        app:layout_constraintTop_toBottomOf="@+id/confirmPassText" />
+
+    <EditText
+        android:id="@+id/passwordText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/usernameText"
+        android:layout_marginTop="13dp"
+        app:layout_constraintTop_toBottomOf="@+id/usernameText"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/usernameText" />
+
+    <EditText
+        android:id="@+id/confirmPassText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/passwordText"
+        android:layout_marginTop="17dp"
+        app:layout_constraintTop_toBottomOf="@+id/passwordText"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/passwordText"
+        app:layout_constraintHorizontal_bias="0.0" />
+
 </android.support.constraint.ConstraintLayout>
