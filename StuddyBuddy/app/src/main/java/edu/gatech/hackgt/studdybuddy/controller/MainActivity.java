@@ -1,7 +1,9 @@
-package edu.gatech.hackgt.studdybuddy;
+package edu.gatech.hackgt.studdybuddy.controller;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import edu.gatech.hackgt.studdybuddy.R;
 
 public class MainActivity extends AppCompatActivity {
 
