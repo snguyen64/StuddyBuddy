@@ -5,6 +5,9 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class User {
+    @SerializedName("userId")
+    private int id;
+
     @SerializedName("firstName")
     private String firstName;
 
@@ -19,6 +22,15 @@ public class User {
 
     @SerializedName("courses")
     private List<Course> courses;
+
+    public User(String firstName, String lastName, String username, String password,
+                List<Course> courses) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.courses = courses;
+    }
 
     public String getFirstName() {
         return firstName;
