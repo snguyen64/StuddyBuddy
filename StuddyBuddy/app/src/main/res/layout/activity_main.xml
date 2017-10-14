@@ -31,7 +31,7 @@
         android:layout_marginTop="0dp"
         android:background="@null"
         android:onClick="register"
-        android:text="New User? Sign up here"
+        android:text="@string/newUser"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@color/cardview_light_background"
         android:textSize="15sp"
