@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import edu.gatech.hackgt.studdybuddy.R;
@@ -31,7 +32,7 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
     private RecyclerView messages;
     private ChatAdapter chatAdapter;
     private EditText textMessage;
-
+    private LinearLayoutManager manager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,18 +45,24 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
         textMessage = (EditText) findViewById(R.id.textMessage);
         messages = (RecyclerView) findViewById(R.id.messagesView);
         chatAdapter = new ChatAdapter(new ArrayList<ChatMessage>());
-        LinearLayoutManager manager = new LinearLayoutManager(this);
-        manager.setStackFromEnd(true);
-        manager.setReverseLayout(true);
+        messages.setAdapter(chatAdapter);
+        manager = new LinearLayoutManager(this);
+        manager.setStackFromEnd(false);
+        manager.setReverseLayout(false);
         messages.setLayoutManager(manager);
     }
 
-//    public void sendMessage(View view) {
-//        String mess = textMessage.getText().toString();
-//        if (TextUtils.isEmpty(mess)) {
-//            return;
-//        } else {
-//            //change.getCourses to getMessages
+    public void sendMessage(View view) {
+        String mess = textMessage.getText().toString();
+        if (TextUtils.isEmpty(mess) || mess == null) {
+            return;
+        } else {
+            chatAdapter.add(new ChatMessage(mess, false));
+            chatAdapter.setMessages(chatAdapter.getMessages());
+            chatAdapter.notifyDataSetChanged();
+            scrollToBottom();
+            //textMessage.setText("");
+            //change.getCourses to getMessages
 //            APIClient.getInstance().getCourses(ActiveChatRoomActivity.textMessage).enqueue(new Callback<List<ChatMessage>>() {
 //                @Override
 //                public void onResponse(Call<List<ChatMessage>> call, Response<List<ChatMessage>> response) {
@@ -73,11 +80,11 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
 //                }
 //            });
 //
-//        }
+        }
         //android.gravity = right will set right align
         //you add this message to the recycler view
         //then call scrollToBottom
-//    }
+    }
     //call this everytime you add something, it'll scroll to the bottom
     public void scrollToBottom(){
         messages.scrollToPosition(0);
