@@ -6,8 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 import java.util.Locale;
+
+import edu.gatech.hackgt.studdybuddy.R;
 
 public class CourseAdapter extends RecyclerView.Adapter {
     private List<Course> courseList;
@@ -29,7 +33,6 @@ public class CourseAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         DataViewHolder dvh = (DataViewHolder) holder;
         final Course rd = courseList.get(position);
-
     }
 
     @Override
@@ -37,9 +40,10 @@ public class CourseAdapter extends RecyclerView.Adapter {
         return 0;
     }
     private static class DataViewHolder extends RecyclerView.ViewHolder {
-
+        private TextView course;
         public DataViewHolder(View itemView) {
             super(itemView);
+            course = itemView.findViewById(R.id.courseItem);
         }
     }
 }
