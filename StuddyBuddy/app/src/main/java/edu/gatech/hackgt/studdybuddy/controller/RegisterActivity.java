@@ -29,6 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText username;
     private EditText password;
     private EditText confirmPass;
+    private EditText email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +42,14 @@ public class RegisterActivity extends AppCompatActivity {
         username = (EditText) findViewById(R.id.usernameText);
         password = (EditText) findViewById(R.id.passwordText);
         confirmPass = (EditText) findViewById(R.id.confirmPassText);
+        email = (EditText) findViewById(R.id.emailText);
 
         FormValidator fn = new FormValidator(firstName, "First name");
         FormValidator ln = new FormValidator(lastName, "Last name");
         FormValidator un = new FormValidator(username, "Username");
         FormValidator pa = new FormValidator(password, "Password");
         FormValidator cp = new FormValidator(confirmPass, "Confirm password");
+        FormValidator em = new FormValidator(email, "Email");
 
         firstName.addTextChangedListener(fn);
         firstName.setOnFocusChangeListener(fn);
@@ -58,6 +61,8 @@ public class RegisterActivity extends AppCompatActivity {
         password.setOnFocusChangeListener(pa);
         confirmPass.addTextChangedListener(cp);
         confirmPass.setOnFocusChangeListener(cp);
+        email.addTextChangedListener(em);
+        email.setOnFocusChangeListener(em);
     }
 
     public void cancel(View view) {
@@ -71,12 +76,16 @@ public class RegisterActivity extends AppCompatActivity {
         String user = username.getText().toString();
         String pass = password.getText().toString();
         String confirmPW = confirmPass.getText().toString();
+        String em = email.getText().toString();
+
         if (!pass.equals(confirmPW)) {
             confirmPass.setError("Passwords don't match!");
         }
+
         boolean isValid = firstName.getError() == null && lastName.getError() == null
                 && username.getError() == null && password.getError() == null
-                && confirmPass.getError() == null && !TextUtils.isEmpty(first)
+                && confirmPass.getError() == null && email.getError() == null
+                && !TextUtils.isEmpty(first) && !TextUtils.isEmpty(em)
                 && !TextUtils.isEmpty(last) && !TextUtils.isEmpty(user) && !TextUtils.isEmpty(pass)
                 && !TextUtils.isEmpty(confirmPW);
 

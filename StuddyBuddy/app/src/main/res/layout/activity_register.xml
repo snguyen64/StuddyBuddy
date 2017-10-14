@@ -72,8 +72,9 @@
         android:layout_marginStart="39dp"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toRightOf="@+id/submit"
-        android:layout_marginTop="41dp"
-        app:layout_constraintTop_toBottomOf="@+id/confirmPassText" />
+        android:layout_marginTop="79dp"
+        app:layout_constraintTop_toBottomOf="@+id/confirmPassText"
+        android:layout_marginLeft="39dp" />
 
     <EditText
         android:id="@+id/passwordText"
@@ -105,5 +106,20 @@
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="@+id/passwordText"
         app:layout_constraintHorizontal_bias="0.0" />
+
+    <EditText
+        android:id="@+id/emailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="email@email.com"
+        android:inputType="textPersonName"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/confirmPassText"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/confirmPassText"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/confirmPassText" />
 
 </android.support.constraint.ConstraintLayout>
