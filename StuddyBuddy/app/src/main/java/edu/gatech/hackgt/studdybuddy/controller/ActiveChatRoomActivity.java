@@ -94,7 +94,6 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
             chatAdapter.notifyItemInserted(chatAdapter.getMessages().size() - 1);
             messages.scrollToPosition(chatAdapter.getItemCount()-1);
             textMessage.setText("");
-<<<<<<< HEAD
             //textMessage.setText("");
             //change.getCourses to getMessages
 //            APIClient.getInstance().getCourses(ActiveChatRoomActivity.textMessage).enqueue(new Callback<List<ChatMessage>>() {
@@ -114,7 +113,6 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
 //                }
 //            });
 //
-=======
             ws.send(new Gson().toJson(cm));
         }
     }
@@ -132,7 +130,6 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
         public void onFailure(WebSocket webSocket, Throwable t, okhttp3.Response response) {
             super.onFailure(webSocket, t, response);
             Toast.makeText(ActiveChatRoomActivity.this, "Unable to communicate with server.", Toast.LENGTH_LONG).show();
->>>>>>> ee19375adec6c2cfcbedc255484f6b38839105b1
         }
     }
 }
