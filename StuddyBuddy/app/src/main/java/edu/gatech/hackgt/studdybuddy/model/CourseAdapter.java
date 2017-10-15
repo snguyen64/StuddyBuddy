@@ -22,7 +22,7 @@ public class CourseAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater li = LayoutInflater.from(parent.getContext());
-        View v = li.inflate(R.layout.data_item, parent, false);
+        View v = li.inflate(R.layout.course_card, parent, false);
         return new DataViewHolder(v);
     }
 
@@ -50,7 +50,7 @@ public class CourseAdapter extends RecyclerView.Adapter {
         private TextView course;
         public DataViewHolder(View itemView) {
             super(itemView);
-            course = itemView.findViewById(R.id.courseItem);
+            course = itemView.findViewById(R.id.courseID);
         }
     }
 }
