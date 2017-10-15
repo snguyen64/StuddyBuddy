@@ -68,7 +68,7 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
         manager.setStackFromEnd(true);
         messages.setLayoutManager(manager);
 
-        ChatApp chatApp = (ChatApp) this.getApplication();
+        ChatApp chatApp = new ChatApp();
         socket = chatApp.getSocket();
         socket.emit("enter-room", thisRoom.getName());
         Emitter.Listener onNewMessage = new Emitter.Listener() {
@@ -91,7 +91,7 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
                         cm.setUsername(username);
                         chatAdapter.getMessages().add(cm);
                         chatAdapter.notifyItemInserted(chatAdapter.getMessages().size() - 1);
-                        messages.scrollToPosition(chatAdapter.getItemCount()-1);
+                        messages.scrollToPosition(chatAdapter.getItemCount() - 1);
                     }
                 });
             }
@@ -99,18 +99,6 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
         socket.on("new-message", onNewMessage);
         socket.connect();
 
-        APIClient.getInstance().getChatMessages(thisRoom.getName()).enqueue(new Callback<List<ChatMessage>>() {
-            @Override
-            public void onResponse(Call<List<ChatMessage>> call, Response<List<ChatMessage>> response) {
-                chatAdapter.setMessages(response.body());
-                chatAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFailure(Call<List<ChatMessage>> call, Throwable t) {
-
-            }
-        });
     }
 
     public void goBack(View view) {
@@ -123,6 +111,9 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(mess)) {
         } else {
             socket.emit("new-message", "{'username':" + MainActivity.usern + ", 'message':" + mess + "}");
+            chatAdapter.add(new ChatMessage(mess));
+            chatAdapter.notifyItemInserted(chatAdapter.getMessages().size() - 1);
+            messages.scrollToPosition(chatAdapter.getItemCount() - 1);
             textMessage.setText("");
         }
     }
