@@ -14,7 +14,7 @@
         android:layout_height="30dp"
         android:background="@color/cardview_light_background"
         android:ems="10"
-        android:hint="Chatroom Name"
+        android:hint="@string/chatroom_name"
         android:inputType="textPersonName"
         android:padding="3dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -39,6 +39,7 @@
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1"
+        app:layout_constraintTop_toBottomOf="@id/subjectText"
         android:layout_marginTop="10dp"/>
 
     <Spinner
@@ -127,7 +128,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="0dp"
-        android:text="New Chat"
+        android:text="@string/new_chat"
         android:textColor="@color/cardview_light_background"
         android:textSize="30sp"
         android:textStyle="bold"

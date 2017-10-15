@@ -32,4 +32,6 @@
     <string name="create_chatroom">Create Chatroom</string>
     <string name="chats">Chats</string>
     <string name="add_course">Add Course</string>
+    <string name="chatroom_name">Chatroom Name</string>
+    <string name="new_chat">New Chat</string>
 </resources>
