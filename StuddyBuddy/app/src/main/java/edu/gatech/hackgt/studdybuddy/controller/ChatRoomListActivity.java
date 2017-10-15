@@ -14,11 +14,14 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.github.nkzawa.socketio.client.Socket;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import edu.gatech.hackgt.studdybuddy.R;
 import edu.gatech.hackgt.studdybuddy.model.APIMessage;
+import edu.gatech.hackgt.studdybuddy.model.ChatApp;
 import edu.gatech.hackgt.studdybuddy.model.Chatroom;
 import edu.gatech.hackgt.studdybuddy.model.ChatroomAdapter;
 import edu.gatech.hackgt.studdybuddy.model.Course;
@@ -33,7 +36,6 @@ public class ChatRoomListActivity extends AppCompatActivity {
     private LinearLayoutManager chatroomLayoutManager;
     private ChatroomAdapter chatroomAdapter;
     private Spinner chatroomCourseSelector;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
