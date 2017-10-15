@@ -7,6 +7,8 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.Date;
 
+import edu.gatech.hackgt.studdybuddy.controller.MainActivity;
+
 public class ChatMessage implements Serializable{
     @SerializedName("message")
     private String message;
@@ -19,6 +21,7 @@ public class ChatMessage implements Serializable{
 
     public ChatMessage(String message) {
         this.message = message;
+        this.username = MainActivity.usern;
     }
 
     public String getMessage() {

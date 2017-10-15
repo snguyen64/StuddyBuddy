@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -21,6 +23,11 @@ import edu.gatech.hackgt.studdybuddy.model.ChatMessage;
 import edu.gatech.hackgt.studdybuddy.model.Chatroom;
 import edu.gatech.hackgt.studdybuddy.model.Course;
 import edu.gatech.hackgt.studdybuddy.util.APIClient;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.WebSocket;
+import okhttp3.WebSocketListener;
+import okio.ByteString;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,6 +40,8 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
     private ChatAdapter chatAdapter;
     private EditText textMessage;
     private LinearLayoutManager manager;
+    private WebSocket ws;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +59,24 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
         manager.setReverseLayout(false);
         manager.setStackFromEnd(true);
         messages.setLayoutManager(manager);
+
+        OkHttpClient client = new OkHttpClient();
+        Request req = new Request.Builder().url("ws://10.0.2.2:8888").build();
+        ChatSocket cs = new ChatSocket();
+        ws = client.newWebSocket(req, cs);
+
+        APIClient.getInstance().getChatMessages(thisRoom.getName()).enqueue(new Callback<List<ChatMessage>>() {
+            @Override
+            public void onResponse(Call<List<ChatMessage>> call, Response<List<ChatMessage>> response) {
+                chatAdapter.setMessages(response.body());
+                chatAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<List<ChatMessage>> call, Throwable t) {
+
+            }
+        });
     }
 
     public void goBack(View view) {
@@ -59,35 +86,31 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
 
     public void sendMessage(View view) {
         String mess = textMessage.getText().toString();
-        if (TextUtils.isEmpty(mess) || mess == null) {
+        if (TextUtils.isEmpty(mess)) {
             return;
         } else {
-            chatAdapter.add(new ChatMessage(mess, false));
-            chatAdapter.setMessages(chatAdapter.getMessages());
-            chatAdapter.notifyDataSetChanged();
+            ChatMessage cm = new ChatMessage(mess);
+            chatAdapter.add(cm);
+            chatAdapter.notifyItemInserted(chatAdapter.getMessages().size() - 1);
             messages.scrollToPosition(chatAdapter.getItemCount()-1);
-            //textMessage.setText("");
-            //change.getCourses to getMessages
-//            APIClient.getInstance().getCourses(ActiveChatRoomActivity.textMessage).enqueue(new Callback<List<ChatMessage>>() {
-//                @Override
-//                public void onResponse(Call<List<ChatMessage>> call, Response<List<ChatMessage>> response) {
-//                    if (!response.isSuccessful()) {
-//                        return;
-//                    } else {
-//                        chatAdapter.setMessages(response.body());
-//                        chatAdapter.notifyDataSetChanged();
-//                    }
-//                }
-//
-//                @Override
-//                public void onFailure(Call<List<ChatMessage>> call, Throwable t) {
-//                    return;
-//                }
-//            });
-//
+            textMessage.setText("");
+            ws.send(new Gson().toJson(cm));
         }
-        //android.gravity = right will set right align
-        //you add this message to the recycler view
-        //then call scrollToBottom
+    }
+
+    private final class ChatSocket extends WebSocketListener {
+        @Override
+        public void onMessage(WebSocket webSocket, String text) {
+            ChatMessage cm = new Gson().fromJson(text, ChatMessage.class);
+            chatAdapter.getMessages().add(cm);
+            chatAdapter.notifyItemInserted(chatAdapter.getMessages().size() - 1);
+            messages.scrollToPosition(chatAdapter.getItemCount() - 1);
+        }
+
+        @Override
+        public void onFailure(WebSocket webSocket, Throwable t, okhttp3.Response response) {
+            super.onFailure(webSocket, t, response);
+            Toast.makeText(ActiveChatRoomActivity.this, "Unable to communicate with server.", Toast.LENGTH_LONG).show();
+        }
     }
 }
