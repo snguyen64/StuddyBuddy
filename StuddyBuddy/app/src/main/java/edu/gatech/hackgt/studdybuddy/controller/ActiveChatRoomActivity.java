@@ -89,9 +89,15 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(mess)) {
             return;
         } else {
+<<<<<<< HEAD
             ChatMessage cm = new ChatMessage(mess);
             chatAdapter.add(cm);
             chatAdapter.notifyItemInserted(chatAdapter.getMessages().size() - 1);
+=======
+            chatAdapter.add(new ChatMessage(mess));
+            chatAdapter.setMessages(chatAdapter.getMessages());
+            chatAdapter.notifyDataSetChanged();
+>>>>>>> adee55252dd9b3b562596759a529f16960e44adc
             messages.scrollToPosition(chatAdapter.getItemCount()-1);
             textMessage.setText("");
             ws.send(new Gson().toJson(cm));
