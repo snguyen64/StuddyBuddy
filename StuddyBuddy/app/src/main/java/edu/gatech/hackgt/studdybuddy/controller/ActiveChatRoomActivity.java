@@ -62,7 +62,7 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(mess) || mess == null) {
             return;
         } else {
-            chatAdapter.add(new ChatMessage(mess, false));
+            chatAdapter.add(new ChatMessage(mess));
             chatAdapter.setMessages(chatAdapter.getMessages());
             chatAdapter.notifyDataSetChanged();
             messages.scrollToPosition(chatAdapter.getItemCount()-1);
