@@ -66,6 +66,7 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
             chatAdapter.setMessages(chatAdapter.getMessages());
             chatAdapter.notifyDataSetChanged();
             messages.scrollToPosition(chatAdapter.getItemCount()-1);
+            textMessage.setText("");
             //textMessage.setText("");
             //change.getCourses to getMessages
 //            APIClient.getInstance().getCourses(ActiveChatRoomActivity.textMessage).enqueue(new Callback<List<ChatMessage>>() {

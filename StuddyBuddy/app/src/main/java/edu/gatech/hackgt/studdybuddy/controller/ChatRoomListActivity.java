@@ -104,6 +104,11 @@ public class ChatRoomListActivity extends AppCompatActivity {
         });
     }
 
+    public void goBack(View view) {
+        Intent intent = new Intent(this, ProfileCourseActivity.class);
+        startActivity(intent);
+    }
+
     public void createRoom(View view) {
         Intent intent = new Intent(this, ChatRoomCreateActivity.class);
         startActivity(intent);
