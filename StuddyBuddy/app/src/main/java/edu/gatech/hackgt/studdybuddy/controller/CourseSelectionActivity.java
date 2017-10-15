@@ -162,4 +162,9 @@ public class CourseSelectionActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void goBack(View view) {
+        Intent intent = new Intent(this, ProfileCourseActivity.class);
+        startActivity(intent);
+    }
 }

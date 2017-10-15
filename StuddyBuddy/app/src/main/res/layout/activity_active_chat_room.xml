@@ -105,6 +105,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         android:background="@color/colorPrimary"
+        android:onClick="goBack"
         android:text="@string/back"
         android:textColor="@color/cardview_light_background"
         android:textSize="14sp"
