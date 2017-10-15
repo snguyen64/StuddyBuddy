@@ -94,6 +94,25 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
             chatAdapter.notifyItemInserted(chatAdapter.getMessages().size() - 1);
             messages.scrollToPosition(chatAdapter.getItemCount()-1);
             textMessage.setText("");
+            //textMessage.setText("");
+            //change.getCourses to getMessages
+//            APIClient.getInstance().getCourses(ActiveChatRoomActivity.textMessage).enqueue(new Callback<List<ChatMessage>>() {
+//                @Override
+//                public void onResponse(Call<List<ChatMessage>> call, Response<List<ChatMessage>> response) {
+//                    if (!response.isSuccessful()) {
+//                        return;
+//                    } else {
+//                        chatAdapter.setMessages(response.body());
+//                        chatAdapter.notifyDataSetChanged();
+//                    }
+//                }
+//
+//                @Override
+//                public void onFailure(Call<List<ChatMessage>> call, Throwable t) {
+//                    return;
+//                }
+//            });
+//
             ws.send(new Gson().toJson(cm));
         }
     }

@@ -100,14 +100,13 @@
 
     <Button
         android:id="@+id/backButton"
+        android:onClick="goBack"
         android:layout_width="50dp"
         android:layout_height="35dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         android:background="@color/colorPrimary"
-        android:onClick="goBack"
         android:text="@string/back"
-        android:onClick="goBack"
         android:textColor="@color/cardview_light_background"
         android:textSize="14sp"
         app:layout_constraintLeft_toRightOf="@+id/backArrowImage"
@@ -115,6 +114,7 @@
 
     <ImageView
         android:id="@+id/backArrowImage"
+        android:onClick="goBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"

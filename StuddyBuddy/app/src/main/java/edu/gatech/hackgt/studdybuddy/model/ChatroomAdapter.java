@@ -40,6 +40,7 @@ public class ChatroomAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final Chatroom chatroom = chatrooms.get(position);
         ((ChatroomViewHolder) holder).groupName.setText(chatroom.getName());
+        ((ChatroomViewHolder) holder).subject.setText(chatroom.getCourse().toString());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
@@ -63,10 +64,12 @@ public class ChatroomAdapter extends RecyclerView.Adapter {
 
     private class ChatroomViewHolder extends RecyclerView.ViewHolder{
         private TextView groupName;
+        private TextView subject;
 
         public ChatroomViewHolder(View itemView) {
             super(itemView);
             groupName = itemView.findViewById(R.id.username);
+            subject = itemView.findViewById(R.id.message);
         }
     }
 }
