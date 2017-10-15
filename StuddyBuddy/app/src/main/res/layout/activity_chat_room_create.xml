@@ -12,22 +12,21 @@
         android:id="@+id/chatroomName"
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginStart="40dp"
         android:background="@color/cardview_light_background"
         android:ems="10"
         android:hint="Chatroom Name"
         android:inputType="textPersonName"
         android:padding="3dp"
-        app:layout_constraintBottom_toTopOf="@+id/submit"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/course" />
 
     <Spinner
         android:id="@+id/courseType"
@@ -65,13 +64,11 @@
         android:text="Create Chatroom"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintBottom_creator="1"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="40dp"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="100dp"
-        app:layout_constraintHorizontal_bias="0.502" />
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/chatroomName" />
 
     <Button
         android:id="@+id/cancel"
