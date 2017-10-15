@@ -45,6 +45,6 @@ public interface APIService {
     @POST("chatroom/list/")
     Call<List<Chatroom>> getListofChatroomsByCourse(@Body Course course);
 
-    @GET("chatroom/messages/{name}")
+    @GET("chatroom/messages/{name}/")
     Call<List<ChatMessage>> getChatMessages(@Path("name") String name);
 }

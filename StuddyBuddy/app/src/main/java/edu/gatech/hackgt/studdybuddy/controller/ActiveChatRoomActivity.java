@@ -1,11 +1,13 @@
 package edu.gatech.hackgt.studdybuddy.controller;
 
 import android.content.Intent;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -40,7 +42,6 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
     private ChatAdapter chatAdapter;
     private EditText textMessage;
     private LinearLayoutManager manager;
-    private WebSocket ws;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +60,6 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
         manager.setReverseLayout(false);
         manager.setStackFromEnd(true);
         messages.setLayoutManager(manager);
-
-        OkHttpClient client = new OkHttpClient();
-        Request req = new Request.Builder().url("ws://10.0.2.2:8888").build();
-        ChatSocket cs = new ChatSocket();
-        ws = client.newWebSocket(req, cs);
 
         APIClient.getInstance().getChatMessages(thisRoom.getName()).enqueue(new Callback<List<ChatMessage>>() {
             @Override
@@ -87,30 +83,12 @@ public class ActiveChatRoomActivity extends AppCompatActivity {
     public void sendMessage(View view) {
         String mess = textMessage.getText().toString();
         if (TextUtils.isEmpty(mess)) {
-            return;
         } else {
             ChatMessage cm = new ChatMessage(mess);
             chatAdapter.add(cm);
             chatAdapter.notifyItemInserted(chatAdapter.getMessages().size() - 1);
             messages.scrollToPosition(chatAdapter.getItemCount()-1);
             textMessage.setText("");
-            ws.send(new Gson().toJson(cm));
-        }
-    }
-
-    private final class ChatSocket extends WebSocketListener {
-        @Override
-        public void onMessage(WebSocket webSocket, String text) {
-            ChatMessage cm = new Gson().fromJson(text, ChatMessage.class);
-            chatAdapter.getMessages().add(cm);
-            chatAdapter.notifyItemInserted(chatAdapter.getMessages().size() - 1);
-            messages.scrollToPosition(chatAdapter.getItemCount() - 1);
-        }
-
-        @Override
-        public void onFailure(WebSocket webSocket, Throwable t, okhttp3.Response response) {
-            super.onFailure(webSocket, t, response);
-            Toast.makeText(ActiveChatRoomActivity.this, "Unable to communicate with server.", Toast.LENGTH_LONG).show();
         }
     }
 }
